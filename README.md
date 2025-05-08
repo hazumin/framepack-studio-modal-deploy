@@ -48,7 +48,7 @@ A script to deploy [FramePack-Studio](https://github.com/colinurbs/FramePack-Stu
 
 3. **Stop the App**
    ```bash
-   modal app stop
+   modal app stop framepack
    ```
    - Alternatively, the app will automatically shut down after idling for 10 minutes to prevent being overcharged.
 
