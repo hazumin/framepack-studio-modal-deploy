@@ -25,7 +25,7 @@ A GPU-accelerated AI media generation platform deployed via Modal. Features mode
 
 2. **Clone this repo**
    ```bash
-   git clone https://github.com/yourusername/framepack-studio-modal-deploy.git
+   git clone https://github.com/hazumin/framepack-studio-modal-deploy.git
    cd framepack-studio-modal-deploy
    ```
 
