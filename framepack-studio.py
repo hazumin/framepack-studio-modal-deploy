@@ -122,7 +122,7 @@ def download_loras(api_key):
     gpu="a10g",
     cpu=2,
     memory=1024,
-    timeout=3600,
+    timeout=600,
     min_containers=1,  # Keep at least one instance of the server running.
     max_containers=1,
     volumes={
@@ -143,6 +143,6 @@ def ui():
     framepack_path = "/root/FramePack-Studio/studio.py"
     framepack_command = (
         f"python {framepack_path} "
-        f"--server 0.0.0.0 --port {PORT} --share"
+        f"--server 0.0.0.0 --port {PORT}"
     )
     subprocess.Popen(framepack_command, shell=True)
