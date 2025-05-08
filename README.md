@@ -1,7 +1,3 @@
-# Known Issue
-
-Due to how the outputs are structured, the web ui will encounter an error after a full sampling steps. Still figuring that out.
-
 # FramePack-Studio Deployment for Modal.com
 
 A script to deploy [FramePack-Studio](https://github.com/colinurbs/FramePack-Studio) via Modal.
