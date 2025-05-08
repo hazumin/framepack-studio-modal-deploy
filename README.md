@@ -46,6 +46,12 @@ A script to deploy [FramePack-Studio](https://github.com/colinurbs/FramePack-Stu
    - On first time generating, it's normal to wait for a few minutes to download all the models.
    - Additionally, check the app logs for status. `https://modal.com/apps/<your-username>/main/<app-id>`
 
+3. **Stop the App**
+   ```bash
+   modal app stop
+   ```
+   - Alternatively, the app will automatically shut down after idling for 10 minutes to prevent being overcharged.
+
 ## Configuration
 
 Customize `framepack-studio.py`:
