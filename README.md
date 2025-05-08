@@ -9,7 +9,7 @@ A GPU-accelerated AI media generation platform deployed via Modal. Features mode
 ## Features
 
 - GPU-accelerated inference (NVIDIA A10G)
-- Automatic CivitAI model downloads
+- Automatic CivitAI LORA downloads
 - Web UI with Gradio interface
 - Persistent storage with Modal volumes
 - Secure API key management
@@ -41,10 +41,13 @@ A GPU-accelerated AI media generation platform deployed via Modal. Features mode
    ```bash
    modal deploy framepack-studio.py
    ```
+   - First time running will take 10-20 minutes, consecutive runs will take seconds due to Modal persistent volumes.
 
 2. **Access Web UI**
    - After deployment, Modal will provide a URL
    - Access via browser at `https://<your-app-name>-modal-app.modal.run`
+   - Accessing the UI for the first time will trigger the downloads for the required models, it's normal to wait for a few minutes to download the models.
+   - Additionally, check the app logs for current job status. `https://modal.com/apps/<your-username>/main/<app-id>`
 
 ## Configuration
 
