@@ -48,7 +48,7 @@ framepack_image = (
     )
     .run_commands(
         "cd root && git clone https://github.com/colinurbs/FramePack-Studio.git",
-        "mkdir root/FramePack-Studio/outputs root/FramePack-Studio/loras",
+        "mkdir -p root/FramePack-Studio/outputs root/FramePack-Studio/loras",
     )
 )
 
@@ -71,11 +71,9 @@ image = framepack_image.env({
 # Initialize the Modal app with the image that includes environment variables.
 app = modal.App("framepack", image=image)
 
-@app.function(secrets=[modal.Secret.from_name("civitai-token")])
-def download_loras():
+def download_loras(api_key):
     """Download loras if they don't exist in the volume"""
     os.makedirs(LORA_PATH, exist_ok=True)
-    api_key=os.environment["CIVITAI_API"]
 
     for link in LINKS:
         # Add API token to URL
@@ -113,13 +111,14 @@ def download_loras():
                     for chunk in response.iter_content(chunk_size=8192):
                         f.write(chunk)
                 
-                model_volume.commit()
+                lora_volume.commit()
                 print(f"✅ Successfully downloaded {filename}")
                 
         except Exception as e:
             print(f"❌ Failed to download {filename}: {str(e)}")
 
 @app.function(
+    secrets=[modal.Secret.from_name("civitai-token")],
     gpu="a10g",
     cpu=2,
     memory=1024,
@@ -138,11 +137,12 @@ def download_loras():
 def ui():
     """Start Framepack web interface"""
     # Download models before starting the UI
-    download_loras()
+    apikey=os.environ["CIVITAI_API"]
+    download_loras(apikey)
     
     framepack_path = "/root/FramePack-Studio/studio.py"
     framepack_command = (
         f"python {framepack_path} "
-        f"--server 0.0.0.0 --port {PORT}"
+        f"--server 0.0.0.0 --port {PORT} --share"
     )
     subprocess.Popen(framepack_command, shell=True)
