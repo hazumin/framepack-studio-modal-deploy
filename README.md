@@ -4,7 +4,7 @@ Due to how the outputs are structured, the web ui will encounter an error after 
 
 # FramePack-Studio Deployment for Modal.com
 
-A GPU-accelerated AI media generation platform deployed via Modal. Features model management, LoRA downloads, and a Gradio web interface.
+A script to deploy [FramePack-Studio](https://github.com/colinurbs/FramePack-Studio) via Modal.
 
 ## Features
 
